@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        select, input[type="file"] {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .summary {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            text-align: left;
+        }
+
+        .summary h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .summary p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Summarizer</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <textarea name="text" placeholder="Enter your text here..."></textarea>
+            <select name="length">
+                <option value="short">Short</option>
+                <option value="medium" selected>Medium</option>
+                <option value="long">Long</option>
+            </select>
+            <input type="file" name="file" />
+            <button type="submit">Summarize</button>
+        </form>
+        {% if summary %}
+        <div class="summary">
+            <h2>Summary:</h2>
+            <p>{{ summary }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
